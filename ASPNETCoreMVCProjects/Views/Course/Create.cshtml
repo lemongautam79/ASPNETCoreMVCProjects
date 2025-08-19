@@ -1,0 +1,61 @@
+﻿@model ASPNETCoreMVCProjects.Controllers.CourseViewModel
+
+@{
+    ViewData["Title"] = "Create Course";
+}
+
+<h2>Create Course</h2>
+
+<!-- Form to submit Course data -->
+<form asp-action="Create" method="post" style="max-width: 400px;">
+    <div class="form-row">
+        <label asp-for="Course.Id"></label>
+        <input asp-for="Course.Id" />
+        <!-- Validation messSalary -->
+        <span asp-validation-for="Course.Id" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Course.CourseName"></label>
+        <input asp-for="Course.CourseName" />
+        <span asp-validation-for="Course.CourseName" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Course.Credits"></label>
+        <input asp-for="Course.Credits" />
+        <span asp-validation-for="Course.Credits" class="text-danger"></span>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<!-- Summary of validation errors -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!-- Display submitted Courses in a table -->
+@if (Model.Courses.Any())
+{
+    <h2>All Submitted Courses</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Course Name</th>
+                <th>Credits</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Course in Model.Courses)
+            {
+                // Highlight the latest submitted Course
+                var highlight = Course.Id == Model.LatestCourseId ? "background-color: #d4edda;" : "";
+                <tr style="@highlight">
+                    <td>@Course.Id</td>
+                    <td>@Course.CourseName</td>
+                    <td>@Course.Credits</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
