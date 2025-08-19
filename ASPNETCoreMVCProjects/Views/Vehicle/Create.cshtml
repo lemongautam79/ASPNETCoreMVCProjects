@@ -1,0 +1,68 @@
+﻿@model ASPNETCoreMVCProjects.Controllers.VehicleViewModel
+
+@{
+    ViewData["Title"] = "Create Vehicle Registration";
+}
+
+<h2>Create Vehicle</h2>
+
+<!-- Form to submit Vehicle data -->
+<form asp-action="Create" method="post" style="max-width: 400px;">
+    <div class="form-row">
+        <label asp-for="Vehicle.Id"></label>
+        <input asp-for="Vehicle.Id" />
+        <!-- Validation messSalary -->
+        <span asp-validation-for="Vehicle.Id" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Vehicle.Model"></label>
+        <input asp-for="Vehicle.Model" />
+        <span asp-validation-for="Vehicle.Model" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Vehicle.OwnerName"></label>
+        <input asp-for="Vehicle.OwnerName" />
+        <span asp-validation-for="Vehicle.OwnerName" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Vehicle.Year"></label>
+        <input asp-for="Vehicle.Year" />
+        <span asp-validation-for="Vehicle.Year" class="text-danger"></span>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<!-- Summary of validation errors -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!-- Display submitted Vehicles in a table -->
+@if (Model.Vehicles.Any())
+{
+    <h2>All Submitted Vehicles</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Model</th>
+                <th>Owner</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Vehicle in Model.Vehicles)
+            {
+                // Highlight the latest submitted Vehicle
+                var highlight = Vehicle.Id == Model.LatestVehicleId ? "background-color: #d4edda;" : "";
+                <tr style="@highlight">
+                    <td>@Vehicle.Id</td>
+                    <td>@Vehicle.Model</td>
+                    <td>@Vehicle.OwnerName</td>
+                    <td>@Vehicle.Year</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

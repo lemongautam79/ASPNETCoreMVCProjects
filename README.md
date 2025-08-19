@@ -25,7 +25,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Collect feedback (CustomerName, Email, Message, Rating).  
   - Display feedback in a table sorted by latest rating submitted.  
 
-- [ ] **6. Vehicle Registration System**  
+✅ **6. Vehicle Registration System**  
   - Add vehicles (VehicleId, Model, OwnerName, Year).  
   - Show all vehicles in a table with highlighted latest entry.  
 
