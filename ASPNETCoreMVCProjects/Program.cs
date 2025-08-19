@@ -23,10 +23,8 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    //pattern: "{controller=Home}/{action=Index}/{id?}")
-    //.WithStaticAssets();
-    pattern: "{controller=Employee}/{action=Create}/{id?}");
-   
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+);
 
 
 app.Run();
