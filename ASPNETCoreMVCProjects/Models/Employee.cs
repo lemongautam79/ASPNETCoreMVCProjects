@@ -17,6 +17,8 @@ namespace ASPNETCoreMVCProjects.Models
         [Required(ErrorMessage = "Department Name is required")]
         public string Department { get; set; }
 
+        //Salary is required
+        [Required(ErrorMessage = "Salary is required")]
         public int Salary { get; set; }
     }
 }
