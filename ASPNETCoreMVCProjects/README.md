@@ -5,7 +5,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
 
 ## Project Checklist ✅
 
-- [ ] **1. Employee Registration Form**  
+- [x] **1. Employee Registration Form**  
   - Create a form to register employees (Id, Name, Department, Salary).  
   - Display all employees in a table. Highlight the latest entry and sort descending by Id.  
 
