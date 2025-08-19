@@ -5,11 +5,11 @@ Each project includes form creation, data display, sorting, filtering, highlight
 
 ## Project Checklist ✅
 
-- [X] **1. Employee Registration Form**  
+- ✅ **1. Employee Registration Form**  
   - Create a form to register employees (Id, Name, Department, Salary).  
   - Display all employees in a table. Highlight the latest entry and sort descending by Id.  
 
-- [X] **2. Product Inventory Management**  
+- ✅ **2. Product Inventory Management**  
   - Form to add products (ProductId, Name, Price, Quantity).  
   - Show all products in a table, calculate total inventory value, highlight recently added product.  
 
