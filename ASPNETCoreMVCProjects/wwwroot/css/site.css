@@ -1,4 +1,4 @@
-html {
+/*html {
   font-size: 14px;
 }
 
@@ -28,4 +28,46 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
+}*/
+
+/* Align labels and inputs neatly */
+.form-row {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
 }
+
+    .form-row label {
+        width: 100px;
+        margin-right: 10px;
+    }
+
+    .form-row input {
+        flex: 1;
+        padding: 5px;
+    }
+
+/* Button styling */
+button {
+    padding: 5px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+/* Table styling */
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 100%;
+}
+
+    table th, table td {
+        padding: 8px;
+        text-align: left;
+    }

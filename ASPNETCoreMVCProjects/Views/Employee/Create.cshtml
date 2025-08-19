@@ -1,0 +1,68 @@
+﻿@model ASPNETCoreMVCProjects.Controllers.EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Create Employee";
+}
+
+<h2>Create Employee</h2>
+
+<!-- Form to submit Employee data -->
+<form asp-action="Create" method="post" style="max-width: 400px;">
+    <div class="form-row">
+        <label asp-for="Employee.Id"></label>
+        <input asp-for="Employee.Id" />
+        <!-- Validation messSalary -->
+        <span asp-validation-for="Employee.Id" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Employee.Name"></label>
+        <input asp-for="Employee.Name" />
+        <span asp-validation-for="Employee.Name" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Employee.Department"></label>
+        <input asp-for="Employee.Department" />
+        <span asp-validation-for="Employee.Department" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Employee.Salary"></label>
+        <input asp-for="Employee.Salary" />
+        <span asp-validation-for="Employee.Salary" class="text-danger"></span>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<!-- Summary of validation errors -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!-- Display submitted Employees in a table -->
+@if (Model.Employees.Any())
+{
+    <h2>All Submitted Employees</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model.Employees)
+            {
+                // Highlight the latest submitted Employee
+                var highlight = employee.Id == Model.LatestEmployeeId ? "background-color: #d4edda;" : "";
+                <tr style="@highlight">
+                    <td>@employee.Id</td>
+                    <td>@employee.Name</td>
+                    <td>@employee.Department</td>
+                    <td>@employee.Salary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
