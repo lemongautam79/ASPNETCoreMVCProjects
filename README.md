@@ -37,7 +37,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Add events (EventId, EventName, Date, Venue).  
   - Show upcoming events in a table sorted by date. Highlight the latest added.  
 
-- [ ] **9. Hotel Room Booking**  
+✅ **9. Hotel Room Booking**  
   - Add booking details (BookingId, CustomerName, RoomNumber, CheckInDate, CheckOutDate).  
   - Display bookings in a table with latest booking on top.  
 

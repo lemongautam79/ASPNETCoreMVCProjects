@@ -1,0 +1,75 @@
+﻿@model ASPNETCoreMVCProjects.Controllers.HotelViewModel
+
+@{
+    ViewData["Title"] = "Create Hotel";
+}
+
+<h2>Create Hotel</h2>
+
+<!-- Form to submit Hotel data -->
+<form asp-action="Create" method="post" style="max-width: 400px;">
+    <div class="form-row">
+        <label asp-for="Hotel.Id"></label>
+        <input asp-for="Hotel.Id" />
+        <!-- Validation messSalary -->
+        <span asp-validation-for="Hotel.Id" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Hotel.CustomerName"></label>
+        <input asp-for="Hotel.CustomerName" />
+        <span asp-validation-for="Hotel.CustomerName" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Hotel.RoomNumber"></label>
+        <input asp-for="Hotel.RoomNumber" />
+        <span asp-validation-for="Hotel.RoomNumber" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Hotel.CheckInDate"></label>
+        <input asp-for="Hotel.CheckInDate" type="date"/>
+        <span asp-validation-for="Hotel.CheckInDate" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Hotel.CheckOutDate"></label>
+        <input asp-for="Hotel.CheckOutDate" type="date"/>
+        <span asp-validation-for="Hotel.CheckOutDate" class="text-danger"></span>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<!-- Summary of validation errors -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!-- Display submitted Hotels in a table -->
+@if (Model.Hotels.Any())
+{
+    <h2>All Submitted Hotels</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer Name</th>
+                <th>Room Number</th>
+                <th>Check In Date</th>
+                <th>Check Out Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Hotel in Model.Hotels)
+            {
+                // Highlight the latest submitted Hotel
+                var highlight = Hotel.Id == Model.LatestHotelId ? "background-color: #d4edda;" : "";
+                <tr style="@highlight">
+                    <td>@Hotel.Id</td>
+                    <td>@Hotel.CustomerName</td>
+                    <td>@Hotel.RoomNumber</td>
+                    <td>@Hotel.CheckInDate</td>
+                    <td>@Hotel.CheckOutDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
