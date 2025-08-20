@@ -49,7 +49,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Add accounts (AccountId, HolderName, Balance).  
   - Display table with latest account highlighted. Calculate total balance.  
 
-- [ ] **12. Online Quiz Submission**  
+✅ **12. Online Quiz Submission**  
   - Submit quiz answers (StudentId, Name, Score).  
   - Show table of all submissions sorted by score descending, highlight latest submission.  
 
