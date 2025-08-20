@@ -1,0 +1,68 @@
+﻿@model ASPNETCoreMVCProjects.Controllers.MovieViewModel
+
+@{
+    ViewData["Title"] = "Create Movie Bookings";
+}
+
+<h2>Create Movie Bookings</h2>
+
+<!-- Form to submit Movie data -->
+<form asp-action="Create" method="post" style="max-width: 400px;">
+    <div class="form-row">
+        <label asp-for="Movie.Id"></label>
+        <input asp-for="Movie.Id" />
+        <!-- Validation Movie -->
+        <span asp-validation-for="Movie.Id" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Movie.MovieName"></label>
+        <input asp-for="Movie.MovieName" />
+        <span asp-validation-for="Movie.MovieName" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Movie.SeatNumber"></label>
+        <input asp-for="Movie.SeatNumber" />
+        <span asp-validation-for="Movie.SeatNumber" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Movie.Price"></label>
+        <input asp-for="Movie.Price" />
+        <span asp-validation-for="Movie.Price" class="text-danger"></span>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<!-- Summary of validation errors -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!-- Display submitted Movies in a table -->
+@if (Model.Movies.Any())
+{
+    <h2>All Submitted Movies</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>Ticket ID</th>
+                <th>Movie Name</th>
+                <th>Seat Number</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Movie in Model.Movies)
+            {
+                // Highlight the latest submitted Movie
+                var highlight = Movie.Id == Model.LatestMovieBookingId ? "background-color: #d4edda;" : "";
+                <tr style="@highlight">
+                    <td>@Movie.Id</td>
+                    <td>@Movie.MovieName</td>
+                    <td>@Movie.SeatNumber</td>
+                    <td>@Movie.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
