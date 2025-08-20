@@ -1,0 +1,67 @@
+﻿@model ASPNETCoreMVCProjects.Controllers.BankViewModel;
+
+@{
+    ViewData["Title"] = "Create Bank";
+}
+
+<h2> Create Banks</h2>
+
+<!-- Form to submit Bank data -->
+<form asp-action="Create" method="post" style="max-width: 400px;">
+    <div class="form-row">
+        <label asp-for="Bank.Id"></label>
+        <input asp-for="Bank.Id" />
+        <!-- Validation message -->
+        <span asp-validation-for="Bank.Id" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Bank.AccountHolder"></label>
+        <input asp-for="Bank.AccountHolder" />
+        <span asp-validation-for="Bank.AccountHolder" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Bank.Balance"></label>
+        <input asp-for="Bank.Balance" />
+        <span asp-validation-for="Bank.Balance" class="text-danger"></span>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<!-- Summary of validation errors -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!--Display submitted Banks in a table-->
+@if (Model.Banks.Any())
+{
+    <h2>All Submitted Banks</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Holder Name</th>
+                <th>Balance</th>
+                @* <th>Total</th> *@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bank in Model.Banks)
+            {
+                // Highlight the latest submitted Bank
+                var highlight = bank.Id == Model.LatestAccountId ? "background-color: #d4edda;" : "";
+                <tr class="@(bank.Id == Model.LatestAccountId ? "table-success" : "")" style="@highlight">
+                    <td>@bank.Id</td>
+                    <td>@bank.AccountHolder</td>
+                    <td>@bank.Balance</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-end"><strong>Total Balance:</strong></td>
+                <td><strong>@Model.TotalBalance</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+}
