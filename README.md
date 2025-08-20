@@ -81,6 +81,6 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Add patient details (PatientId, Name, Age, Disease).  
   - Display patients in table, highlight latest patient, and count total patients.  
 
-- [ ] **20. E-commerce Order Form**  
+✅ **20. E-commerce Order Form**  
   - Add orders (OrderId, CustomerName, ProductName, Quantity, Price).  
   - Show orders table with latest order on top, highlight it, and calculate total price.  
