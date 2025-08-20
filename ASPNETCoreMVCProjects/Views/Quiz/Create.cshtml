@@ -1,0 +1,60 @@
+﻿@model ASPNETCoreMVCProjects.Controllers.QuizViewModel;
+
+@{
+    ViewData["Title"] = "Create Quiz";
+}
+
+<h2> Create Quizes</h2>
+
+<!-- Form to submit Quiz data -->
+<form asp-action="Create" method="post" style="max-width: 400px;">
+    <div class="form-row">
+        <label asp-for="Quiz.Id"></label>
+        <input asp-for="Quiz.Id" />
+        <!-- Validation message -->
+        <span asp-validation-for="Quiz.Id" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Quiz.Name"></label>
+        <input asp-for="Quiz.Name" />
+        <span asp-validation-for="Quiz.Name" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Quiz.Score"></label>
+        <input asp-for="Quiz.Score" />
+        <span asp-validation-for="Quiz.Score" class="text-danger"></span>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<!-- Summary of validation errors -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!--Display submitted Quizs in a table-->
+@if (Model.Quizes.Any())
+{
+    <h2>All Submitted Quizes</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var quiz in Model.Quizes)
+            {
+                // Highlight the latest submitted Quiz
+                var highlight = quiz.Id == Model.LatestQuizId ? "background-color: #d4edda;" : "";
+                <tr class="@(quiz.Id == Model.LatestQuizId ? "table-success" : "")" style="@highlight">
+                    <td>@quiz.Id</td>
+                    <td>@quiz.Name</td>
+                    <td>@quiz.Score</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
