@@ -1,0 +1,82 @@
+﻿@model ASPNETCoreMVCProjects.Controllers.EcommerceViewModel;
+
+@{
+    ViewData["Title"] = "Create Ecommerce";
+}
+
+<h2> Create Ecommerce Order</h2>
+
+<!-- Form to submit Ecommerce data -->
+<form asp-action="Create" method="post" style="max-width: 400px;">
+    <div class="form-row">
+        <label asp-for="Ecommerce.Id"></label>
+        <input asp-for="Ecommerce.Id" />
+        <!-- Validation message -->
+        <span asp-validation-for="Ecommerce.Id" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Ecommerce.CustomerName"></label>
+        <input asp-for="Ecommerce.CustomerName" />
+        <span asp-validation-for="Ecommerce.CustomerName" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Ecommerce.ProductName"></label>
+        <input asp-for="Ecommerce.ProductName" />
+        <span asp-validation-for="Ecommerce.ProductName" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Ecommerce.Price"></label>
+        <input asp-for="Ecommerce.Price" />
+        <span asp-validation-for="Ecommerce.Price" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Ecommerce.Quantity"></label>
+        <input asp-for="Ecommerce.Quantity" />
+        <span asp-validation-for="Ecommerce.Quantity" class="text-danger"></span>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<!-- Summary of validation errors -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!--Diplay submitted Ecommerces in a table-->
+@if (Model.Ecommerces.Any())
+{
+    <h2>All Submitted Ecommerces</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer Name</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Ecommerce in Model.Ecommerces)
+            {
+                // Highlight the latest submitted Ecommerce
+                var highlight = Ecommerce.Id == Model.LatestEcommerceId ? "background-color: #d4edda;" : "";
+                <tr class="@(Ecommerce.Id == Model.LatestEcommerceId ? "table-success" : "")" style="@highlight">
+                    <td>@Ecommerce.Id</td>
+                    <td>@Ecommerce.CustomerName</td>
+                    <td>@Ecommerce.ProductName</td>
+                    <td>@Ecommerce.Price</td>
+                    <td>@Ecommerce.Quantity</td>
+                    <td>@(Ecommerce.Price* Ecommerce.Quantity)</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-end"><strong>Total Inventory Value:</strong></td>
+                <td><strong>@Model.TotalPrice</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+}
