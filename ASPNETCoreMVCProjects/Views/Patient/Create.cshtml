@@ -1,0 +1,67 @@
+﻿@model ASPNETCoreMVCProjects.Controllers.PatientViewModel
+
+@{
+    ViewData["Title"] = "Create Patient";
+}
+
+<h2>Create Patient</h2>
+
+<!-- Form -->
+<form asp-action="Create" method="post" style="max-width: 400px;">
+    <div class="form-row">
+        <label asp-for="Patient.Id"></label>
+        <input asp-for="Patient.Id" />
+        <span asp-validation-for="Patient.Id" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Patient.Name"></label>
+        <input asp-for="Patient.Name" />
+        <span asp-validation-for="Patient.Name" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Patient.Age"></label>
+        <input asp-for="Patient.Age" />
+        <span asp-validation-for="Patient.Age" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Patient.Disease"></label>
+        <input asp-for="Patient.Disease" />
+        <span asp-validation-for="Patient.Disease" class="text-danger"></span>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<!-- Validation summary -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!-- Show patient list -->
+@if (Model.Patients.Any())
+{
+    <h2>All Submitted Patients</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Disease</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var patient in Model.Patients)
+            {
+                var highlight = patient.Id == Model.LatestPatientId ? "background-color: #d4edda;" : "";
+                <tr style="@highlight">
+                    <td>@patient.Id</td>
+                    <td>@patient.Name</td>
+                    <td>@patient.Age</td>
+                    <td>@patient.Disease</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Total Patients: @Model.Patients.Count()</h3>
+}
