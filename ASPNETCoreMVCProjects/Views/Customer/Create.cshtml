@@ -1,0 +1,68 @@
+﻿@model ASPNETCoreMVCProjects.Controllers.CustomerViewModel
+
+@{
+    ViewData["Title"] = "Create Customer Feedback";
+}
+
+<h2>Create Customer Feedback</h2>
+
+<!-- Form to submit Customer Feedback data -->
+<form asp-action="Create" method="post" style="max-width: 400px;">
+    <div class="form-row">
+        <label asp-for="Customer.Rating">Rate from 0 to 5</label>
+        <input asp-for="Customer.Rating" />
+        <!-- Validation messSalary -->
+        <span asp-validation-for="Customer.Rating" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Customer.Name"></label>
+        <input asp-for="Customer.Name" />
+        <span asp-validation-for="Customer.Name" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Customer.Email"></label>
+        <input asp-for="Customer.Email" />
+        <span asp-validation-for="Customer.Email" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Customer.Message"></label>
+        <input asp-for="Customer.Message" />
+        <span asp-validation-for="Customer.Message" class="text-danger"></span>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<!-- Summary of validation errors -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!-- Display submitted Customers in a table -->
+@if (Model.Customers.Any())
+{
+    <h2>All Submitted Customers</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>Rating</th>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model.Customers)
+            {
+                // Highlight the latest submitted Customer
+                var highlight = customer.SubmittedAt == Model.LatestCustomerFeedback ? "background-color: #d4edda;" : "";
+                <tr style="@highlight">
+                    <td>@customer.Rating</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.Email</td>
+                    <td>@customer.Message</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

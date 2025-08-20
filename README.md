@@ -21,7 +21,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Register courses (CourseId, Name, Credits).  
   - Display all courses in a table. Highlight the most recent course.  
 
-- [ ] **5. Customer Feedback Form**  
+✅ **5. Customer Feedback Form**  
   - Collect feedback (CustomerName, Email, Message, Rating).  
   - Display feedback in a table sorted by latest rating submitted.  
 
