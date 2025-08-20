@@ -1,0 +1,68 @@
+﻿@model ASPNETCoreMVCProjects.Controllers.GymViewModel
+
+@{
+    ViewData["Title"] = "Create Gym Memberships";
+}
+
+<h2>Create Gym Memberships</h2>
+
+<!-- Form to submit Gym data -->
+<form asp-action="Create" method="post" style="max-width: 400px;">
+    <div class="form-row">
+        <label asp-for="Gym.Id"></label>
+        <input asp-for="Gym.Id" />
+        <!-- Validation messSalary -->
+        <span asp-validation-for="Gym.Id" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Gym.Name"></label>
+        <input asp-for="Gym.Name" />
+        <span asp-validation-for="Gym.Name" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Gym.MembershipType"></label>
+        <input asp-for="Gym.MembershipType" />
+        <span asp-validation-for="Gym.MembershipType" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Gym.JoinDate"></label>
+        <input asp-for="Gym.JoinDate" type="date"/>
+        <span asp-validation-for="Gym.JoinDate" class="text-danger"></span>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<!-- Summary of validation errors -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!-- Display submitted Gyms in a table -->
+@if (Model.Gyms.Any())
+{
+    <h2>All Submitted Gyms</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Member Name</th>
+                <th>Membership Type</th>
+                <th>Join Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Gym in Model.Gyms)
+            {
+                // Highlight the latest submitted Gym
+                var highlight = Gym.Id == Model.LatestGymId ? "background-color: #d4edda;" : "";
+                <tr style="@highlight">
+                    <td>@Gym.Id</td>
+                    <td>@Gym.Name</td>
+                    <td>@Gym.MembershipType</td>
+                    <td>@Gym.JoinDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
