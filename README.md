@@ -57,7 +57,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Record book issue (IssueId, StudentName, BookTitle, IssueDate).  
   - Table shows all issues, highlight latest issue, calculate number of days issued.  
 
-- [ ] **14. Gym Membership Form**  
+✅ **14. Gym Membership Form**  
   - Add members (MemberId, Name, MembershipType, JoinDate).  
   - Display members table with latest member highlighted.  
 
