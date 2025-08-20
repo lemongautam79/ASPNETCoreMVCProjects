@@ -45,7 +45,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Form for tickets (TicketId, MovieName, SeatNumber, Price).  
   - Display tickets in a table, highlight latest ticket booked.  
 
-- [ ] **11. Bank Account Management**  
+✅ **11. Bank Account Management**  
   - Add accounts (AccountId, HolderName, Balance).  
   - Display table with latest account highlighted. Calculate total balance.  
 
