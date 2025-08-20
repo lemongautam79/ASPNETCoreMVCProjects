@@ -41,7 +41,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Add booking details (BookingId, CustomerName, RoomNumber, CheckInDate, CheckOutDate).  
   - Display bookings in a table with latest booking on top.  
 
-- [ ] **10. Movie Ticket Booking**  
+✅ **10. Movie Ticket Booking**  
   - Form for tickets (TicketId, MovieName, SeatNumber, Price).  
   - Display tickets in a table, highlight latest ticket booked.  
 
