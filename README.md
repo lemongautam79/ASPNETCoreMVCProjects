@@ -61,7 +61,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Add members (MemberId, Name, MembershipType, JoinDate).  
   - Display members table with latest member highlighted.  
 
-- [ ] **15. Restaurant Order Management**  
+✅ **15. Restaurant Order Management**  
   - Form to add orders (OrderId, CustomerName, Item, Quantity, Price).  
   - Display orders table with total order amount and highlight latest order.  
 
