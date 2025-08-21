@@ -13,7 +13,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Form to add products (ProductId, Name, Price, Quantity).  
   - Show all products in a table, calculate total inventory value, highlight recently added product.  
 
-- [ ] **3. Book Library System**  
+✅ **3. Book Library System**  
   - Add books (BookId, Title, Author, PublicationYear).  
   - Display books table with latest added on top, and filter by author using a dropdown.  
 
@@ -77,7 +77,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Collect applicants (ApplicationId, Name, Position, Experience).  
   - Show all applicants table, highlight latest applicant, filter by position.  
 
-- [ ] **19. Clinic Patient Registration**  
+✅ **19. Clinic Patient Registration**  
   - Add patient details (PatientId, Name, Age, Disease).  
   - Display patients in table, highlight latest patient, and count total patients.  
 

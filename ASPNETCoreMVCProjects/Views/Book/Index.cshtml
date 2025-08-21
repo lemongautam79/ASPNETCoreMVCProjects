@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ASPNETCoreMVCProjects.Models.Book>
+
+@{
+    ViewData["Title"] = "Books List";
+    var current = Context.Request.Query["authorFilter"].ToString();
+}
+
+<h2>Books</h2>
+
+<form method="get">
+    <label>Filter By Author:</label>
+    <select name="authorFilter" onchange="this.form.submit()">
+        <option value="">-- All --</option>
+        @foreach (var author in (ViewBag.Authors as List<string>))
+        {
+            <option value="@author" selected="@(current == author ? "selected" : null)">
+                @author
+            </option>
+        }
+    </select>
+</form>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Book</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>BookId</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publication Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.BookId</td>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.PublicationYear</td>
+            </tr>
+        }
+    </tbody>
+</table>
