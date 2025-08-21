@@ -65,7 +65,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Form to add orders (OrderId, CustomerName, Item, Quantity, Price).  
   - Display orders table with total order amount and highlight latest order.  
 
-- [ ] **16. Flight Reservation Form**  
+✅ **16. Flight Reservation Form**  
   - Add reservations (ReservationId, PassengerName, FlightNumber, Date).  
   - Table sorted by reservation date descending, highlight latest reservation.  
 
