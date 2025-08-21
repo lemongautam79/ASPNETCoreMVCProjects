@@ -69,7 +69,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Add reservations (ReservationId, PassengerName, FlightNumber, Date).  
   - Table sorted by reservation date descending, highlight latest reservation.  
 
-- [ ] **17. Product Feedback System**  
+✅ **17. Product Feedback System**  
   - Submit feedback (CustomerName, ProductName, Rating, Comment).  
   - Display table of feedback sorted by latest rating and highlight new feedback.  
 
