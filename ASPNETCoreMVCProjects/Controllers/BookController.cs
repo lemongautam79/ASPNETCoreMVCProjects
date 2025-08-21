@@ -8,22 +8,6 @@ namespace ASPNETCoreMVCProjects.Controllers
         // Static list of demo
         private static List<Book> books = new List<Book>();
 
-        //public IActionResult Index(string authorFilter)
-        //{
-        //    //Get unique authors for dropdown
-        //    ViewBag.Authors = books.Select(b=>b.Author).Distinct().ToList();
-
-        //    //Filter by author if selected
-        //    var filteredBooks = string.IsNullOrEmpty(authorFilter)
-        //        ? books
-        //        : books.Where(b => b.Author == authorFilter).ToList();
-
-        //    // Sort latest added on top (by bookId descending)
-        //    filteredBooks = filteredBooks.OrderByDescending(b=>b.BookId).ToList();
-
-        //    return View(filteredBooks);
-        //}
-
         public IActionResult Index(string authorFilter)
         {
             ViewBag.Authors = books.Select(b => b.Author).Distinct().ToList();

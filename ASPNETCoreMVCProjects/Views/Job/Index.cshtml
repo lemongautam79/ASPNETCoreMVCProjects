@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ASPNETCoreMVCProjects.Models.Job>
+
+@{
+    ViewData["Title"] = "Job Application List";
+    var current = Context.Request.Query["positionFilter"].ToString();
+}
+
+<h2>Jobs Applications</h2>
+
+<form method="get">
+    <label>Filter By Position:</label>
+    <select name="positionFilter" onchange="this.form.submit()">
+        <option value="">-- All --</option>
+        @foreach (var position in (ViewBag.Positions as List<string>))
+        {
+            <option value="@position" selected="@(current == position ? "selected" : null)">
+                @position
+            </option>
+        }
+    </select>
+</form>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Job Applications</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ApplicationId</th>
+            <th>Applicant Name</th>
+            <th>Position</th>
+            <th>Experience</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.ApplicationId</td>
+                <td>@book.Name</td>
+                <td>@book.Position</td>
+                <td>@book.Experience</td>
+            </tr>
+        }
+    </tbody>
+</table>

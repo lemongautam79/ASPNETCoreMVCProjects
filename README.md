@@ -73,7 +73,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Submit feedback (CustomerName, ProductName, Rating, Comment).  
   - Display table of feedback sorted by latest rating and highlight new feedback.  
 
-- [ ] **18. Job Application Form**  
+✅ **18. Job Application Form**  
   - Collect applicants (ApplicationId, Name, Position, Experience).  
   - Show all applicants table, highlight latest applicant, filter by position.  
 
