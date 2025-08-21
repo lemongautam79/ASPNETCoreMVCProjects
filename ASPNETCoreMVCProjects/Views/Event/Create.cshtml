@@ -1,0 +1,30 @@
+﻿@model ASPNETCoreMVCProjects.Models.Event
+
+@{
+    ViewData["Title"] = "Add Event";
+}
+
+<h2>Add Event</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="EventName" class="form-label"></label>
+        <input asp-for="EventName" class="form-control" />
+        <span asp-validation-for="EventName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Date" class="form-label"></label>
+        <input asp-for="Date" type="date" class="form-control" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Venue" class="form-label"></label>
+        <input asp-for="Venue" class="form-control" />
+        <span asp-validation-for="Venue" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>
