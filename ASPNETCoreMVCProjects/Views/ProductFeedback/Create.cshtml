@@ -1,0 +1,68 @@
+﻿@model ASPNETCoreMVCProjects.Controllers.ProductFeedbackViewModel
+
+@{
+    ViewData["Title"] = "Create Product Feedback";
+}
+
+<h2>Create Product Feedback</h2>
+
+<!-- Form to submit Product Feedback data -->
+<form asp-action="Create" method="post" style="max-width: 400px;">
+    <div class="form-row">
+        <label asp-for="ProductFeedback.Rating">Rate from 0 to 5</label>
+        <input asp-for="ProductFeedback.Rating" />
+        <!-- Validation messSalary -->
+        <span asp-validation-for="ProductFeedback.Rating" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="ProductFeedback.Name"></label>
+        <input asp-for="ProductFeedback.Name" />
+        <span asp-validation-for="ProductFeedback.Name" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="ProductFeedback.ProductName"></label>
+        <input asp-for="ProductFeedback.ProductName" />
+        <span asp-validation-for="ProductFeedback.ProductName" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="ProductFeedback.Comment"></label>
+        <input asp-for="ProductFeedback.Comment" />
+        <span asp-validation-for="ProductFeedback.Comment" class="text-danger"></span>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<!-- Summary of validation errors -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!-- Display submitted ProductFeedbacks in a table -->
+@if (Model.ProductFeedbacks.Any())
+{
+    <h2>All Submitted Product Feedbacks</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>Rating</th>
+                <th>Customer Name</th>
+                <th>Product Name</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var productFeedback in Model.ProductFeedbacks)
+            {
+                // Highlight the latest submitted ProductFeedback
+                var highlight = productFeedback.SubmittedAt == Model.LatestProductFeedback ? "background-color: #d4edda;" : "";
+                <tr style="@highlight">
+                    <td>@productFeedback.Rating</td>
+                    <td>@productFeedback.Name</td>
+                    <td>@productFeedback.ProductName</td>
+                    <td>@productFeedback.Comment</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
