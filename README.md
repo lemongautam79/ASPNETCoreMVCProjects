@@ -29,7 +29,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Add vehicles (VehicleId, Model, OwnerName, Year).  
   - Show all vehicles in a table with highlighted latest entry.  
 
-- [ ] **7. Student Marks Entry**  
+✅ **7. Student Marks Entry**  
   - Form to enter student marks (StudentId, Name, Subject, Marks).  
   - Display marks table with highest mark highlighted.  
 

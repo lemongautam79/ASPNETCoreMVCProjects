@@ -9,10 +9,9 @@ namespace ASPNETCoreMVCProjects.Controllers
 
         public IActionResult Index()
         {
-            if (marksList.Count > 0)
+            if (marksList.Any())
             {
-                int highest = marksList.Max(m => m.Marks);
-                ViewBag.Highest = highest;
+                ViewBag.Highest = marksList.Max(m => m.Marks);  // highest mark
             }
             else
             {

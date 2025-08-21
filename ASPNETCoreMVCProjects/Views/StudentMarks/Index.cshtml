@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Student Marks";
+    int highestMark = ViewBag.Highest ?? 0;   // safe assignment
+    Console.WriteLine(highestMark);
 }
 
 <h2>Student Marks</h2>
@@ -22,13 +24,11 @@
     <tbody>
         @foreach (var s in Model)
         {
-            <tr>
+            <tr class="@(s.Marks == highestMark ? "table-success" : "")">
                 <td>@s.StudentId</td>
                 <td>@s.Name</td>
                 <td>@s.Subject</td>
-                <td class="@(s.Marks == (int)ViewBag.Highest ? "table-success fw-bold" : "")">
-                    @s.Marks
-                </td>
+                <td>@s.Marks</td>
             </tr>
         }
     </tbody>
