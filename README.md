@@ -33,7 +33,7 @@ Each project includes form creation, data display, sorting, filtering, highlight
   - Form to enter student marks (StudentId, Name, Subject, Marks).  
   - Display marks table with highest mark highlighted.  
 
-- [ ] **8. Event Management System**  
+✅ **8. Event Management System**  
   - Add events (EventId, EventName, Date, Venue).  
   - Show upcoming events in a table sorted by date. Highlight the latest added.  
 

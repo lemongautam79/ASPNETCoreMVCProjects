@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ASPNETCoreMVCProjects.Models.Event>
+
+@{
+    ViewData["Title"] = "Events";
+    int latestId = ViewBag.LatestEventId ?? 0;
+}
+
+<h2>Upcoming Events</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Event</a>
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>Event Id</th>
+            <th>Event Name</th>
+            <th>Date</th>
+            <th>Venue</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ev in Model)
+        {
+            <tr class="@(ev.EventId == latestId ? "table-success" : "")">
+                <td>@ev.EventId</td>
+                <td>@ev.EventName</td>
+                <td>@ev.Date.ToString("yyyy-MM-dd")</td>
+                <td>@ev.Venue</td>
+            </tr>
+        }
+    </tbody>
+</table>
