@@ -18,6 +18,17 @@ namespace ASPNETCoreMVCProjects.Controllers
             return View();
         }
 
+        public JsonResult GetJSONDdata()
+        {
+            var data = new { Name = "Lemon", Age = 22 };
+            return Json(data);
+        }
+
+        public IActionResult RedirectToGoogle()
+        {
+            return Redirect("https://www.google.com");
+        }
+
         public IActionResult Privacy()
         {
             return View();

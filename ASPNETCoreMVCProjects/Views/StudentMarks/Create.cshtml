@@ -1,0 +1,30 @@
+﻿@model ASPNETCoreMVCProjects.Models.StudentMarks
+
+@{
+    ViewData["Title"] = "Add Student Marks";
+}
+
+<h2>Add Student Marks</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Subject"></label>
+        <input asp-for="Subject" class="form-control" />
+        <span asp-validation-for="Subject" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Marks"></label>
+        <input asp-for="Marks" class="form-control" />
+        <span asp-validation-for="Marks" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>
