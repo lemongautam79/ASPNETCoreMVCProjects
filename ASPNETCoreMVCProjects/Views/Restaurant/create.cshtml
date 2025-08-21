@@ -24,7 +24,46 @@
         <input asp-for="Restaurant.Quantity" />
         <span asp-validation-for="Restaurant.Quantity" class="text-danger"></span>
     </div>
+    <div class="form-row">
+        <label asp-for="Restaurant.Price"></label>
+        <input asp-for="Restaurant.Price" />
+        <span asp-validation-for="Restaurant.Price" class="text-danger"></span>
+    </div>
     <div style="margin-top: 10px;">
         <button type="submit">Submit</button>
     </div>
 </form>
+
+<!-- Summary of validation errors -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!--Diplay submitted orders in a table-->
+@if (Model.Restaurants.Any())
+{
+    <h2>All Submitted Restaurants</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer Name</th>
+                <th>Food Item Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var restaurant in Model.Restaurants)
+            {
+                <tr>
+                    <td>@restaurant.Id</td>
+                    <td>@restaurant.CustomerName</td>
+                    <td>@restaurant.FoodItemName</td>
+                    <td>@restaurant.Quantity</td>
+                    <td>@restaurant.Price.ToString("C")</td>
+                    <td>@((restaurant.Quantity * restaurant.Price).ToString("C"))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
