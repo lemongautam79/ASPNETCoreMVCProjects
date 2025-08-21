@@ -1,0 +1,68 @@
+﻿@model ASPNETCoreMVCProjects.Controllers.AdarshViewModel
+
+@{
+    ViewData["Title"] = "Create Adarsh";
+}
+
+<h2>Create Adarsh</h2>
+
+<!-- Form to submit Adarsh data -->
+<form asp-action="Create" method="post" style="max-width: 400px;">
+    <div class="form-row">
+        <label asp-for="Adarsh.ID"></label>
+        <input asp-for="Adarsh.ID" />
+        <!-- Validation messSalary -->
+        <span asp-validation-for="Adarsh.ID" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Adarsh.Name"></label>
+        <input asp-for="Adarsh.Name" />
+        <span asp-validation-for="Adarsh.Name" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Adarsh.Email"></label>
+        <input asp-for="Adarsh.Email" />
+        <span asp-validation-for="Adarsh.Email" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Adarsh.RollNo"></label>
+        <input asp-for="Adarsh.RollNo" />
+        <span asp-validation-for="Adarsh.RollNo" class="text-danger"></span>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<!-- Summary of validation errors -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!-- Display submitted Adarshs in a table -->
+@if (Model.Adarshs.Any())
+{
+    <h2>All Submitted Adarsh</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Rollno</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var adarsh in Model.Adarshs)
+            {
+                // Highlight the latest submitted Adarsh
+                var highlight = adarsh.ID == Model.LatestAdarshId ? "background-color: #d4edda;" : "";
+                <tr style="@highlight">
+                    <td>@adarsh.ID</td>
+                    <td>@adarsh.Name</td>
+                    <td>@adarsh.Email</td>
+                    <td>@adarsh.RollNo</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

@@ -9,11 +9,11 @@ namespace ASPNETCoreMVCProjects.Models
         public int ID { get; set; }
 
         // Name is required
-        [Required(ErrorMessage = "name is required")]
+        [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
 
         // roll no is required 
-        [Required(ErrorMessage = "roll no is required")]
+        [Required(ErrorMessage = "Roll no is required")]
         public int RollNo { get; set; }
 
         // email is required
