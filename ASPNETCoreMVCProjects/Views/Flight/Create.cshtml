@@ -1,0 +1,67 @@
+﻿@model ASPNETCoreMVCProjects.Controllers.FlightViewModel
+
+@{
+    ViewData["Title"] = "Add Flight";
+}
+
+<h2>Add Flight</h2>
+
+<!-- Form -->
+<form asp-action="Create" method="post" style="max-width: 400px;">
+    <div class="form-row">
+        <label asp-for="Flight.ReservationId"></label>
+        <input asp-for="Flight.ReservationId" />
+        <span asp-validation-for="Flight.ReservationId" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Flight.PassengerName"></label>
+        <input asp-for="Flight.PassengerName" />
+        <span asp-validation-for="Flight.PassengerName" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Flight.FlightNumber"></label>
+        <input asp-for="Flight.FlightNumber" />
+        <span asp-validation-for="Flight.FlightNumber" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <label asp-for="Flight.FlightDate"></label>
+        <input asp-for="Flight.FlightDate" type="date" />
+        <span asp-validation-for="Flight.FlightDate" class="text-danger"></span>
+    </div>
+    <div style="margin-top: 10px;">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<!-- Validation summary -->
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<!-- Show patient list -->
+@if (Model.Flights.Any())
+{
+    <h2>All Submitted Flights</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>PassengerName</th>
+                <th>FlightNumber</th>
+                <th>FlightDate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var patient in Model.Flights)
+            {
+                var highlight = patient.ReservationId == Model.LatestFlightId ? "background-color: #d4edda;" : "";
+                <tr style="@highlight">
+                    <td>@patient.ReservationId</td>
+                    <td>@patient.PassengerName</td>
+                    <td>@patient.FlightNumber</td>
+                    <td>@patient.FlightDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Total Flights: @Model.Flights.Count()</h3>
+}
